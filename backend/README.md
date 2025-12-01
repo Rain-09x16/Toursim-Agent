@@ -363,7 +363,6 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 ## 📞 Support
 
-- **Code Questions:** Check [LEARNING_GUIDE.md](LEARNING_GUIDE.md)
 - **API Docs:** Visit `/docs` endpoint
 - **Issues:** File an issue on GitHub
 
@@ -374,5 +373,3 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 - Tech Stack: FastAPI, Python, Gemini AI, Qdrant
 
 ---
-
-**Built with ❤️ using FastAPI and Python**

@@ -349,9 +349,6 @@ MIT License - Built for LabLab.ai Hackathon
 ## 👨‍💻 Credits
 
 **Built by:** Aritra
-**Hackathon:** LabLab.ai
 **Technologies:** Google Gemini 2.5 Flash, Qdrant, Clerk, Next.js 16, Vercel
 
 ---
-
-**✅ Hackathon Demo** 🏙️ 🤖 ✈️
