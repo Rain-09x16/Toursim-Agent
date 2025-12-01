@@ -520,7 +520,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 **Hackathon:** LabLab.ai
 **Technologies:** Google Gemini 2.5 Flash, Qdrant, Clerk, Next.js 16, FastAPI, Vercel
 
-**Project Link:** [https://github.com/yourusername/dubai-navigator](https://github.com/yourusername/dubai-navigator)
+**Project Link:** [https://github.com/Rain-09x16/Dubify](https://github.com/Rain-09x16/Dubify)
 
 ---
 
