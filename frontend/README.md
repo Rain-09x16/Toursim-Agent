@@ -183,6 +183,32 @@ Frontend runs on: http://localhost:3000
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
 
+### Docker Setup (Alternative)
+
+If you prefer using Docker:
+
+1. **Build the Docker image:**
+```bash
+cd frontend
+docker build -t dubai-navigator-frontend .
+```
+
+2. **Run the container:**
+```bash
+docker run -p 3000:3000 --env-file .env.local dubai-navigator-frontend
+```
+
+3. **Or use Docker Compose (from project root):**
+```bash
+# This will start both frontend and backend together
+docker-compose up --build
+```
+
+**Benefits:**
+- ✅ No need to install Node.js locally
+- ✅ Consistent environment
+- ✅ Easy deployment
+
 ## 🔑 API Keys Setup
 
 ### Clerk Authentication (Required)

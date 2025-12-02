@@ -22,6 +22,7 @@ A comprehensive full-stack AI tourism application featuring Google Gemini 2.5 Fl
 - [Architecture](#architecture)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
+- [Docker Setup](#running-with-docker)
 - [Project Structure](#project-structure)
 - [API Documentation](#api-documentation)
 - [Deployment](#deployment)
@@ -270,6 +271,75 @@ npm run dev
 ```
 
 Now visit: http://localhost:3000
+
+### Running with Docker
+
+The easiest way to run both frontend and backend together is using Docker Compose:
+
+#### Prerequisites
+- **Docker Desktop** (includes Docker and Docker Compose)
+- Download from: https://www.docker.com/products/docker-desktop
+
+#### Using Docker Compose
+
+1. **Make sure you have environment files ready:**
+   - `backend/.env` with your API keys
+   - `frontend/.env.local` with Clerk keys
+
+2. **Build and start all services:**
+```bash
+# Build and start in detached mode
+docker-compose up -d --build
+
+# Or run in foreground (see logs)
+docker-compose up --build
+```
+
+3. **Access the application:**
+   - Frontend: http://localhost:3000
+   - Backend: http://localhost:8000
+   - API Docs: http://localhost:8000/docs
+
+4. **View logs:**
+```bash
+# All services
+docker-compose logs -f
+
+# Specific service
+docker-compose logs -f frontend
+docker-compose logs -f backend
+```
+
+5. **Stop services:**
+```bash
+# Stop containers
+docker-compose down
+
+# Stop and remove volumes
+docker-compose down -v
+```
+
+#### Running Individual Services with Docker
+
+**Backend only:**
+```bash
+cd backend
+docker build -t dubai-navigator-backend .
+docker run -p 8000:8000 --env-file .env dubai-navigator-backend
+```
+
+**Frontend only:**
+```bash
+cd frontend
+docker build -t dubai-navigator-frontend .
+docker run -p 3000:3000 --env-file .env.local dubai-navigator-frontend
+```
+
+#### Docker Benefits
+- ✅ No need to install Python or Node.js
+- ✅ Consistent environment across all machines
+- ✅ Easy deployment to cloud platforms
+- ✅ Isolated dependencies
 
 ---
 

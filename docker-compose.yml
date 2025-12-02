@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  # Backend Service - FastAPI
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: dubai-navigator-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - QDRANT_URL=${QDRANT_URL}
+      - QDRANT_API_KEY=${QDRANT_API_KEY}
+      - CLERK_SECRET_KEY=${CLERK_SECRET_KEY}
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DEBUG=True
+      - CORS_ORIGINS=http://localhost:3000,http://frontend:3000
+    env_file:
+      - ./backend/.env
+    volumes:
+      # Mount code for development hot-reload (comment out for production)
+      - ./backend:/app
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    networks:
+      - dubai-navigator-network
+    restart: unless-stopped
+
+  # Frontend Service - Next.js
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: dubai-navigator-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://backend:8000
+      - NEXT_PUBLIC_APP_URL=http://localhost:3000
+      - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+      - CLERK_SECRET_KEY=${CLERK_SECRET_KEY}
+      - NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+      - NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+      - NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+      - NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
+    env_file:
+      - ./frontend/.env.local
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - dubai-navigator-network
+    restart: unless-stopped
+
+networks:
+  dubai-navigator-network:
+    driver: bridge
+
+# Optional: Add volumes for persistence
+volumes:
+  backend-data:
+    driver: local

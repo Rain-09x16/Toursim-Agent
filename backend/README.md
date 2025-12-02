@@ -91,6 +91,32 @@ http://localhost:8000/docs     # Interactive API documentation
 http://localhost:8000/health   # Health check
 ```
 
+### Docker Setup (Alternative)
+
+If you prefer using Docker:
+
+1. **Build the Docker image:**
+```bash
+cd backend
+docker build -t dubai-navigator-backend .
+```
+
+2. **Run the container:**
+```bash
+docker run -p 8000:8000 --env-file .env dubai-navigator-backend
+```
+
+3. **Or use Docker Compose (from project root):**
+```bash
+# This will start both frontend and backend
+docker-compose up --build
+```
+
+**Benefits:**
+- ✅ No need to install Python locally
+- ✅ Isolated environment
+- ✅ Easy deployment
+
 ## 📁 Project Structure
 
 ```
