@@ -11,7 +11,7 @@
 
 **Live Demo:** [https://dubify-five.vercel.app](https://dubify-five.vercel.app)
 
-A comprehensive full-stack AI tourism application featuring Google Gemini 2.5 Flash AI, Qdrant vector search, intelligent rate limiting, and modern authentication. Built for the LabLab.ai hackathon showcasing cutting-edge AI capabilities.
+A comprehensive full-stack AI tourism application featuring Google Gemini 2.5 Flash AI, Qdrant vector search, intelligent rate limiting, and modern authentication.
 
 ---
 
