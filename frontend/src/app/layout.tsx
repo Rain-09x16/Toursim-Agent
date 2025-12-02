@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   ],
 };
 
+// Force dynamic rendering to ensure Clerk environment variables are available
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({
   children,
 }: Readonly<{
