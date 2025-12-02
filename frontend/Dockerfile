@@ -16,7 +16,13 @@ RUN npm ci
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+
+# Copy configuration files first
+COPY tsconfig.json next.config.ts package.json ./
+
+# Copy source code
+COPY src ./src
+COPY public ./public
 
 # Set environment variables for build
 ENV NEXT_TELEMETRY_DISABLED=1
