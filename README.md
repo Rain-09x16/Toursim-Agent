@@ -1,4 +1,4 @@
-# 🏙️ Dubai Navigator AI (Dubify)
+# 🏙️ Toursim Agent (Dubify)
 
 > Your Intelligent Tourism Companion for Dubai - Full-Stack Application with AI-Powered Features
 
